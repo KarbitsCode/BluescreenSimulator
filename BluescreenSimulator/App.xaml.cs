@@ -13,6 +13,7 @@ namespace BluescreenSimulator
     public partial class App : Application
     {
         private const int AttachParentProcess = -1;
+        private AudioMuteScope audioMuteScope;
 
         [DllImport("kernel32", SetLastError = true)]
         private static extern bool AttachConsole(int dwProcessId);
@@ -25,8 +26,9 @@ namespace BluescreenSimulator
 
         protected override void OnExit(ExitEventArgs e)
         {
-            base.OnExit(e);
+            audioMuteScope?.Dispose();
             Settings.Default.Save();
+            base.OnExit(e);
         }
 
         private void Application_Startup(object sender, EventArgs e)
@@ -115,6 +117,7 @@ namespace BluescreenSimulator
                 else
                 {
                     data.ShowView();
+                    audioMuteScope = new AudioMuteScope();
                 }
             }
             else

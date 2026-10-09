@@ -115,6 +115,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AudioMuteScope.cs" />
     <Compile Include="BluescreenViewAttribute.cs" />
     <Compile Include="CmdParameterAttribute.cs" />
     <Compile Include="Controls\ColorPickerForm.xaml.cs">
